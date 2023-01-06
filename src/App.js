@@ -1,9 +1,10 @@
 import React from "react";
 import './scss/app.scss';
-import Header from "./scss/components/Header/Header";
-import Categories from "./scss/components/Categories/Categories";
-import Sort from "./scss/components/Sort/Sort";
-import PizzaBlock from "./scss/components/PizzaBlock/PizzaBlock";
+import Header from "./ReactComponents/Header/Header";
+import Categories from "./ReactComponents/Categories/Categories";
+import Sort from "./ReactComponents/Sort/Sort";
+import PizzaBlock from "./ReactComponents/PizzaBlock/PizzaBlock";
+import pizzass from "./assets/pizass.json";
 
 function App() {
     return (
@@ -15,17 +16,18 @@ function App() {
                         <Categories/>
                         <Sort/>
                     </div>
-                    <h2 className="content__title">Все пиццыяя</h2>
+                    <h2 className="content__title">Все пиццы</h2>
                     <div className="content__items">
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
-                        <PizzaBlock/>
+                        {
+                            pizzass.map((obj) => (
+                                <PizzaBlock title={obj.title}
+                                            price={obj.price}
+                                            image={obj.imageUrl}
+                                            sizes={obj.sizes}
+                                            types={obj.types}
+                                />))
+
+                        }
 
                     </div>
                 </div>
