@@ -20,11 +20,13 @@ function App() {
                     <div className="content__items">
                         {
                             pizzass.map((obj) => (
-                                <PizzaBlock title={obj.title}
-                                            price={obj.price}
-                                            image={obj.imageUrl}
-                                            sizes={obj.sizes}
-                                            types={obj.types}
+                                <PizzaBlock  key={obj.id}
+                                             title={obj.title}
+                                             price={obj.price}
+                                             image={obj.imageUrl}
+                                             sizes={obj.sizes}
+                                             types={obj.types}
+
                                 />))
 
                         }

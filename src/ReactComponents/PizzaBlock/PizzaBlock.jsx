@@ -16,14 +16,14 @@ const [activeSize, setActiveSize]= React.useState(0);
             <div className="pizza-block__selector">
                 <ul>
                     {
-                        types.map((typeIndex,i)=>(<li onClick={()=> setActiveType(i)} className={activeType === i ? "active" : ''}>{typePizza[typeIndex]}</li>))
+                        types.map((typeIndex,i)=>(<li key={typeIndex} onClick={()=> setActiveType(i)} className={activeType === i ? "active" : ''}>{typePizza[typeIndex]}</li>))
                     }
 
 
                 </ul>
                 <ul>
                     {
-                        sizes.map((size,i)=>( <li onClick={()=>setActiveSize(i)} className={activeSize === i? "active" : ''}>{size}см.</li>))
+                        sizes.map((size,i)=>( <li key={size} onClick={()=>setActiveSize(i)} className={activeSize === i? "active" : ''}>{size}см.</li>))
                     }
 
                 </ul>

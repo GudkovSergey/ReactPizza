@@ -1,6 +1,9 @@
 import React from "react";
 
 const Sort =()=> {
+    const [isVisible, setIsVisible]= React.useState(false);
+    const popup = ['популярности', 'цене', 'алфавиту'];
+    const [list,setList]= React.useState(0);
     return(
         <div className="sort">
             <div className="sort__label">
@@ -17,15 +20,21 @@ const Sort =()=> {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span>популярности</span>
+                <span onClick={()=>{setIsVisible(!isVisible)}} >{popup[list]}</span>
             </div>
-            <div className="sort__popup">
+
+            {isVisible && ( <div className="sort__popup">
                 <ul>
-                    <li className="active">популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
+
+                    {
+                        popup.map((listItem,i)=>(<li key={i} onClick={()=>setList(i)} className={list===i? 'active':''} >{popup[i]}</li>))
+                    }
+                    {/*<li className="active">популярности</li>*/}
+                    {/*<li>цене</li>*/}
+                    {/*<li>алфавиту</li>*/}
                 </ul>
-            </div>
+            </div>)
+            }
         </div>
     )
 }
