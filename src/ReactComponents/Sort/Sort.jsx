@@ -27,11 +27,12 @@ const Sort =()=> {
                 <ul>
 
                     {
-                        popup.map((listItem,i)=>(<li key={i} onClick={()=>setList(i)} className={list===i? 'active':''} >{popup[i]}</li>))
+                        popup.map((listItem,i)=>(<li key={i} onClick={()=> {
+                            setList(i)
+                            setIsVisible(false)
+                        }} className={list===i? 'active':''} >{popup[i]}</li>))
                     }
-                    {/*<li className="active">популярности</li>*/}
-                    {/*<li>цене</li>*/}
-                    {/*<li>алфавиту</li>*/}
+
                 </ul>
             </div>)
             }
