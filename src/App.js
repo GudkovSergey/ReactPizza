@@ -2,7 +2,9 @@ import React from "react";
 import './scss/app.scss';
 import Header from "./ReactComponents/Header/Header";
 import Home from "./Pages/Home/Home";
-import NotFoundContainer from "./Pages/NotFound/NotFoundContainer";
+import {Routes, Route} from "react-router-dom";
+import NotFound from "./Pages/NotFound/NotFound";
+import Cart from "./Pages/Card/Cart";
 
 
 function App() {
@@ -11,8 +13,12 @@ function App() {
             <Header/>
             <div className="content">
                 <div className="container">
-                   {/*<Home/>*/}
-                   <NotFoundContainer/>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="*" element={<NotFound/>}/>
+                        <Route path="/cart" element={<Cart/>}/>
+                    </Routes>
+
                 </div>
             </div>
         </div>

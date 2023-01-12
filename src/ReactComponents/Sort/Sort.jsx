@@ -1,10 +1,17 @@
 import React from "react";
 
-const Sort =()=> {
-    const [isVisible, setIsVisible]= React.useState(false);
-    const popup = ['популярности', 'цене', 'алфавиту'];
-    const [list,setList]= React.useState(0);
-    return(
+const Sort = ({list, setList}) => {
+    const [isVisible, setIsVisible] = React.useState(false);
+
+    const popup = [
+        {name: 'популярности (по возрастанию)', sort: 'rating'},
+        {name: 'популярности (по убыванию)', sort: '-rating'},
+        {name: 'цене (по возрастанию)', sort: 'price'},
+        {name: 'цене (по убыванию)' , sort: '-price'},
+        {name: 'алфавиту (по возрастанию)', sort: 'title'},
+        {name: 'алфавиту (по убыванию)', sort: '-title'}
+    ];
+    return (
         <div className="sort">
             <div className="sort__label">
                 <svg
@@ -20,17 +27,19 @@ const Sort =()=> {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={()=>{setIsVisible(!isVisible)}} >{popup[list]}</span>
+                <span onClick={() => {
+                    setIsVisible(!isVisible)
+                }}>{list.name}</span>
             </div>
 
-            {isVisible && ( <div className="sort__popup">
+            {isVisible && (<div className="sort__popup">
                 <ul>
 
                     {
-                        popup.map((listItem,i)=>(<li key={i} onClick={()=> {
-                            setList(i)
+                        popup.map((obj, i) => (<li key={i} onClick={() => {
+                            setList(obj)
                             setIsVisible(false)
-                        }} className={list===i? 'active':''} >{popup[i]}</li>))
+                        }} className={list.sort === obj.sort ? 'active' : ''}>{obj.name}</li>))
                     }
 
                 </ul>
